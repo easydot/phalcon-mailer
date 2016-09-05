@@ -212,7 +212,7 @@ class Mailer implements InjectionAwareInterface
      *
      * @return Message
      */
-    protected function createMessage()
+    public function createMessage()
     {
         $message = new Message(new Swift_Message);
 
