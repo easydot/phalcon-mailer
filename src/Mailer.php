@@ -103,16 +103,19 @@ class Mailer implements InjectionAwareInterface
      *
      * @return int
      */
-    public function send($view, array $data, $callback)
+    public function send($view, array $data, $message = null, $callback = null)
     {
         // First we need to parse the view, which could either be a string or an array
         // containing both an HTML and plain text versions of the view which should
         // be used when sending an e-mail. We will extract both of them out here.
         list($view, $plain) = $this->parseView($view);
 
-        $data['message'] = $message = $this->createMessage();
+//        $data['message'] = $message = $this->createMessage();
+        $data['message'] = !$message ? $message = $this->createMessage() : $message;
 
-        $this->callMessageBuilder($callback, $message);
+        if ($callback) {
+            $this->callMessageBuilder($callback, $message);
+        }
 
         // Once we have retrieved the view content for the e-mail we will set the body
         // of this message using the HTML type, which will provide a simple wrapper
