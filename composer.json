@@ -1,0 +1,37 @@
+{
+    "name": "multidanze/phalcon-mailer",
+    "description": "Phalcon Mailer Module.",
+    "type": "library",
+    "keywords" : [
+        "phalcon",
+        "phalcon mailer"
+    ],
+    "support": {
+        "issues": "https://github.com/multidanze/phalcon-mailer/issues"
+    },
+    "minimum-stability": "stable",
+    "homepage" : "https://github.com/multidanze/phalcon-mailer",
+    "license" : "MIT",
+    "authors" : [{
+        "name": "multidanze",
+        "email": "multidanze@gmail.com",
+        "homepage": "http://easydot.gr",
+        "role": "Developer"
+    }],
+
+    "require" : {
+        "php" : ">=5.4.0"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Translate\\": "src"
+        }
+    },
+
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.*-dev"
+        }
+    }
+}
