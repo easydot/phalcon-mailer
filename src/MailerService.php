@@ -71,9 +71,10 @@ class MailerService extends Component
         // Once we have the transporter registered, we will register the actual Swift
         // mailer instance, passing in the transport instances, which allows us to
         // override this transporter instances during app start-up if necessary.
-        $this->di['swift.mailer'] = function () {
+        $this->di['swift.mailer'] = new Swift_Mailer($this->di['swift.transport']);
+        /*$this->di['swift.mailer'] = function () {
             return new Swift_Mailer($this->di['swift.transport']);
-        };
+        };*/
     }
 
     /**
@@ -168,9 +169,10 @@ class MailerService extends Component
     protected function registerView()
     {
         if ($this->di->has('view')) {
-            $this->di['mailer.view'] = function () {
+            $this->di['mailer.view'] = $this->di->get('view');
+            /*$this->di['mailer.view'] = function () {
                 return $this->di->get('view');
-            };
+            };*/
         } else {
             $this->di['mailer.view'] = function () {
                 if (!isset($this->config['viewsDir'])) {
